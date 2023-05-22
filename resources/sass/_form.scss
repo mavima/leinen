@@ -1,0 +1,32 @@
+.form-container {
+    padding: 1rem;
+}
+
+.item-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    input, textarea, select {
+        margin: 1rem;
+        border-radius: 6px;
+        border: 1px solid $turquoise;
+        padding: 0.5rem;
+    }
+
+
+}
+
+.image-form {
+    margin-top: 2rem;
+}
+
+.edit-image-container {
+    display: flex;
+    justify-content: space-around;
+    width:fit-content;
+
+    .edit-image {
+        margin: 1rem;
+    }
+}

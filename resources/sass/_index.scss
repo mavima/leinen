@@ -1,0 +1,97 @@
+.index-banner {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.index-container {
+    padding: 1rem;
+    width: 100%;
+    
+}
+
+.index-title {
+    font-family: 'Fredericka the Great', cursive;
+    color: $turquoise;
+    margin-left: 3rem;
+}
+
+.index-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.index-card {
+    max-width: 250px;
+    margin: auto !important;
+    margin-top: 1rem !important;
+
+    img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    a:hover {
+        color: inherit;
+    }
+
+    .card-body {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .card-body-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .index-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 1rem;
+        row-gap: 1rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .index-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 2rem;
+        row-gap: 2rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .index-grid {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 1rem;
+        row-gap: 1rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .index-grid {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        column-gap: 2rem;
+        row-gap: 2rem;
+    }
+}
