@@ -11,19 +11,30 @@ use App\Models\Item;
 class ImageController extends Controller
 {
     public function createImage(Request $request, Item $item) {
-        return view('images/create')->with('item', $item);
+        $images = Image::where('item_id', $item->id)->get();
+        if (count($images) < 3) {
+            return view('images/create')->with('item', $item);
+        } else {
+            return redirect('/show/'.$item->id)->with('item', $item);
+        }
+        
     }
 
     public function store(Request $request, Item $item) {
-        $path = $request->file('image')->store('images', 's3');
-        Storage::disk('s3')->setVisibility($path, 'public');
-        $image = Image::create([
-            'filename' => 'images/' . basename($path),
-            'url' => Storage::disk('s3')->url($path),
-            'item_id' => $item->id
-        ]);
+        // dd($request);
+       if (is_null($request->file('image'))) {
+            return redirect()->back();
+        } else {
+            $path = $request->file('image')->store('images', 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
+            $image = Image::create([
+                'filename' => 'images/' . basename($path),
+                'url' => Storage::disk('s3')->url($path),
+                'item_id' => $item->id
+            ]);
+            return redirect('/show/'.$item->id)->with('item', $item);
+        }
 
-        return redirect('/show/'.$item->id)->with('item', $item);
     }
 
     public function delete(Request $request, Item $item, Image $image) {

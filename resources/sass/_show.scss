@@ -1,14 +1,37 @@
 .show-container {
     padding: 1rem;
+    width: 95%;
+    margin: auto;
+}
 
-    img {
-        width: 100%;
-        height: auto;
+.show-title {
+    color: $turquoise;
+    font-weight: 500;
+}
+
+#myCarousel {
+    margin: 2rem auto;
+
+    .carousel-inner {
+        background-color: $light-violet;
+        max-height: 400px;
+
+
+        .carousel-item img {
+            height: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin: auto;
+        }
+    }
+
+    .carousel-arrow {
+        background-color: $violet;
     }
 }
 
 .show-image {
-    height: 30vh;
+    width: 100%;
     margin: 1rem 1rem 1rem 0;
 }
 
@@ -19,4 +42,28 @@
 
 .show-buttons {
     max-width: 117px;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.margin-bottom {
+    margin-bottom: 1rem !important;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .show-container {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
 }
