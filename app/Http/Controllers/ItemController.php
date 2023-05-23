@@ -14,17 +14,47 @@ class ItemController extends Controller
 {
 
     public function index(Request $request) {
-        if (count($request->all()) > 0) {
+        $categories = Category::all();
+        if (count($request->all()) > 0 && $request->category_id == null) {
         $search = $request->input('search');
         $items = Item::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
         } else {
-            $items = Item::orderBy('id', 'desc')->take(20)->get();
+            $items = Item::orderBy('id', 'desc')
+            ->with('category')
+            ->when($request->category_id, function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            })
+            ->get();
         }
-        return view('index', ['items'=>$items]);
+        return view('index', ['items'=>$items, 'categories' => $categories]);
     }
+
+    public function filter(Request $request) {
+
+        $choice = $request->input('$category');
+        $items = Item::query()
+        ->where('category_id', '=', '$choice')
+        ->get();
+        return redirect('index', ['items'=>$items]);
+        // $categoryList = [];
+        // $search = $request->input('search');
+
+        // $categories = Category::all();
+        // foreach ($categories as $category) {
+        //     if ($category->name LIKE "%{$search}%") {
+        //         foreach($category->items as $item) {
+        //             array_push($categoryList, $item);
+        //         }
+        //     }
+            
+        // }
+    }
+
+
+   
 
 
     public function show(Item $item) {
@@ -46,6 +76,7 @@ class ItemController extends Controller
             'description' => 'required',
             'price' => 'required|integer|min:0|max:100000',
             'location' => 'required',
+            'category_id' => 'required'
         ]);
         // Remove malicious input
         $input['name'] = strip_tags($input['name']);
@@ -63,9 +94,10 @@ class ItemController extends Controller
         if (auth()->user()->id !== $item['user_id']) {
             return redirect('/');
         }
+        $categories = Category::all();
         $images = [];
         $images = Image::where('item_id', $item->id)->get();
-        return view('edit', ['item' => $item, 'images' => $images]);
+        return view('edit', ['item' => $item, 'images' => $images, 'categories' => $categories]);
     }
 
     public function update(Item $item, Request $request) {
@@ -78,6 +110,7 @@ class ItemController extends Controller
             'description' => 'required',
             'price' => 'required|integer|min:0|max:100000',
             'location' => 'required',
+            'category_id'=> 'filled',
         ]);
 
         $inputFields['name'] = strip_tags($inputFields['name']);

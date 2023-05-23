@@ -3,18 +3,23 @@
 @section('content')
 
     <div class="form-container">
-        <h2>Edit your item</h2>
+        <h2>Edit the {{$item->name}}</h2>
         <form action="/edit/{{$item->id}}" method="POST" class="item-form">
             @csrf
             @method('PUT')
             <label for="name">Name</label>
-            <input type="text" name="name" value={{$item->name}} label="Name">
+            <textarea name="name" class="fit-input">{{ $item->name }}</textarea>
             <label for="price">Price per day</label>
-            <input type="text" name="price" value={{$item->price}}>
+            <input type="text" name="price" value={{ $item->price }}>
+            <select name="category_id" id="category" class="category" value="Choose">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{($item->category_id === $category->id) ? 'Selected' : ''}}>{{ $category->name}}</option>
+                @endforeach
+            </select>
             <label for="description">Description</label>
-            <textarea name="description">{{$item->description}}</textarea>
+            <textarea name="description">{{ $item->description }}</textarea>
             <label for="location">Location</label>
-            <input type="text" name="location" value={{$item->location}}>
+            <textarea name="location" class="fit-input">{{ $item->location }}</textarea>
             <button class="l-btn main-btn form-btn">Save</button>
         </form>
         <h4>Remove images</h4>    
