@@ -3,6 +3,7 @@
 
 <div class="form-container">
     <h5 class form-subtitle>Add images to your {{ $item->name }}</h5>
+    <p>You can add three images in total</p>
     
     <form action="/images/create/{{$item->id}}" method="POST" enctype="multipart/form-data" class="image-form">
         @csrf

@@ -15,7 +15,7 @@
         </select>
         <textarea name="description" placeholder="Description of the item"></textarea>
         <input type="text" name="location" placeholder="location">
-        {{-- <input type="file" name="image"> --}}
+        <p class="form-info"><i class="fa-solid fa-circle-info"></i> You can add images after submitting this form.</p>
         <button class="l-btn main-btn form-btn">Save</button>
         <a class="l-btn back-btn form-btn" href="{{ '/index' }}"> Back</a>
     </form>
