@@ -33,7 +33,7 @@
             <a class="l-btn main-btn margin-bottom" href = {{ route('createImage', [$item->id]) }}>Add image</a>
             <a class="l-btn main-btn" href = {{ route('edit', [$item->id]) }}>Edit</a>
         @else
-            <button class="main-btn l-btn">Contact owner</button>
+          <a class="l-btn main-btn" href = {{ route('contact', [$item->id]) }}>Contact owner</a>
         @endif
         <a class="l-btn back-btn" href="{{ '/index' }}"><< Back</a>
     </div>
