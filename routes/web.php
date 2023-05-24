@@ -5,12 +5,6 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ItemController;
 
 
-
-Route::get('/', function () {
-    return view('home');
-});
-
-
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
@@ -31,3 +25,6 @@ Route::middleware(['auth'])->group( function () {
     Route::delete('images/delete/{image}', [ImageController::class, 'delete']);
 });
 
+// Route::middleware(['auth', 'admin'])->group( function () {
+//     SOME ROUTE ONLY FOR ADMIN
+// });
