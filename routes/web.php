@@ -13,6 +13,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('hom
 Route::get('/index', [App\Http\Controllers\ItemController::class, 'index'])->name('index');
 Route::get('/show/{item}', [ItemController::class, 'show'])->name('show');
 Route::get('/edit/{item}', [ItemController::class, 'edit'])->name('edit');
+Route::get('/contact/{item}', [ItemController::class, 'contact'])->name('contact');
 
 Route::middleware(['auth'])->group( function () {
     Route::get('/create', [ItemController::class, 'new'])->name('new');

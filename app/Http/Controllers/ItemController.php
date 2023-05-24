@@ -42,6 +42,11 @@ class ItemController extends Controller
         return view('show', ['item' => $item, 'images' => $images, 'currentUser' => $currentUser]);
     }
 
+    public function contact(Item $item) {
+        $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return view('contact', ['item' => $item, 'months' => $months]);
+    }
+
     public function new() {
         $categories = Category::get();
         return view('/create', ['categories' => $categories]);
