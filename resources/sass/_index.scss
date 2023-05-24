@@ -16,7 +16,7 @@
     margin-left: 3rem;
 }
 
-.index-filter-form {
+.index-filter-form, .no-matches-form {
     width: fit-content;
     margin-left: 3rem;
     flex-direction: row;
@@ -26,6 +26,20 @@
         border-radius: 6px;
         border: 1px solid $turquoise;
         padding: 0.5rem;
+    }
+}
+
+.no-matches-text {
+    margin: 1rem 0 1rem 3rem;
+}
+
+.no-matches-buttons {
+    padding: 0 0.5rem;
+    width: fit-content;
+    margin:auto;
+
+    button {
+        margin: 0 0.5rem;
     }
 }
 

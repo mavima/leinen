@@ -34,14 +34,16 @@
       </div>
 
     @else
-        <p>Unfortunately there are no items that match your search. Try again or browse other items.</p>
-        <form action="{{ route('index') }}" method="GET">
+        <p class="no-matches-text">Sorry, there are no items that match your search. Try again or browse other items.</p>
+        <form action="{{ route('index') }}" method="GET" class="no-matches-form">
           <input type="text" name="search" class="home-search" required/>
-          <button type="submit" class="home-search search-button">Search</button>
-        </form>
-        <a href = {{ route('index') }}>
-          <button class="home-search search-button">Browse</button>
-        </a>
+          <div class="no-matches-buttons">
+            <button type="submit" class="l-btn main-btn index-filter-btn">Search</button>
+          </form>
+          <a href = {{ route('index') }}>
+            <button class="l-btn main-btn index-filter-btn">Browse</button>
+          </a>
+        </div>
       @endif
   </div>
     @endsection
