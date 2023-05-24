@@ -18,10 +18,6 @@ class Item extends Model
         'category_id',
     ];
 
-    // protected $attributes = [
-    //     "category_id" => 8
-    // ];
-
     public function images() {
         return $this->hasMany('App\Models\Image', 'item_id');
     }
