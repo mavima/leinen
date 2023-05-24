@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use AWS\CRT\HTTP\Response;
@@ -103,9 +104,12 @@ class ItemController extends Controller
 
     public function delete(Item $item) {
         // POLICY & Middleware
-        if (auth()->user()->id === $item['user_id']) {
+        $user_id = Auth::check() ? Auth::id() : null;
+        $user = User::where('id', $user_id)->first();
+        if ($user_id === $item['user_id']) {
             $item->delete();
         }
-        return redirect('/index');
+        return redirect('profile/'.$user->id)->with('user', $user);
+        // return redirect('images/create/'.$item->id)->with('item', $item);
     }
 }

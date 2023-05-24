@@ -20,8 +20,15 @@
             <textarea name="description">{{ $item->description }}</textarea>
             <label for="location">Location</label>
             <textarea name="location" class="fit-input">{{ $item->location }}</textarea>
-            <button class="l-btn main-btn form-btn">Save</button>
-        </form>
+            <div class="form-buttons">
+                <button class="l-btn main-btn form-btn">Save</button>
+            </form>
+            <form action="/delete/{{$item->id}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="l-btn delete-btn form-btn" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+        </div>
         <h4>Remove images</h4>    
         <div class="edit-image-container">
             @foreach($images as $image)
