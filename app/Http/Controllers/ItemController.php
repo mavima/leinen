@@ -32,30 +32,6 @@ class ItemController extends Controller
         return view('index', ['items'=>$items, 'categories' => $categories]);
     }
 
-    public function filter(Request $request) {
-
-        $choice = $request->input('$category');
-        $items = Item::query()
-        ->where('category_id', '=', '$choice')
-        ->get();
-        return redirect('index', ['items'=>$items]);
-        // $categoryList = [];
-        // $search = $request->input('search');
-
-        // $categories = Category::all();
-        // foreach ($categories as $category) {
-        //     if ($category->name LIKE "%{$search}%") {
-        //         foreach($category->items as $item) {
-        //             array_push($categoryList, $item);
-        //         }
-        //     }
-            
-        // }
-    }
-
-
-   
-
 
     public function show(Item $item) {
         $images = [];

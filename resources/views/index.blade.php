@@ -4,7 +4,7 @@
 <img class="index-banner" src={{ Storage::url('images/index-banner.png') }}>
 <div class="index-container">
   <h2 class="index-title">Waiting to be shared</h2>
-  <form action="{{ route('index') }}" method="POST" enctype="multipart/form-data" class="index-filter-form">
+  <form action="{{ route('index') }}" method="GET" enctype="multipart/form-data" class="index-filter-form">
     @csrf
     <select name="category_id" id="category" class="category">
         <option disable selected>--select category--</option>
