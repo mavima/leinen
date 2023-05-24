@@ -16,6 +16,20 @@
     margin-left: 3rem;
 }
 
+.index-filter-form {
+    width: fit-content;
+    margin-left: 3rem;
+    flex-direction: row;
+
+    input, textarea, select {
+        margin: 1rem;
+        border-radius: 6px;
+        border: 1px solid $turquoise;
+        padding: 0.5rem;
+    }
+}
+
+
 .index-grid {
     display: flex;
     flex-direction: column;

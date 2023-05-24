@@ -4,6 +4,16 @@
 <img class="index-banner" src={{ Storage::url('images/index-banner.png') }}>
 <div class="index-container">
   <h2 class="index-title">Waiting to be shared</h2>
+  <form action="{{ route('index') }}" method="GET" enctype="multipart/form-data" class="index-filter-form">
+    @csrf
+    <select name="category_id" id="category" class="category">
+        <option disable selected>--select category--</option>
+        @foreach($categories as $category)
+        <option value="{{ $category->id }}">{{ $category->name}}</option>
+    @endforeach
+    </select>
+    <button class="l-btn main-btn index-filter-btn">Filter</button>
+</form>
 
     @if (count($items) > 0)
       <div class="index-grid">
