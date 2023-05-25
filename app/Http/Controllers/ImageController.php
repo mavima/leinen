@@ -15,7 +15,7 @@ class ImageController extends Controller
         if (count($images) < 3) {
             return view('images/create')->with('item', $item);
         } else {
-            return redirect('/show/'.$item->id)->with('item', $item);
+            return redirect('/show/'.$item->slug)->with('item', $item);
         }
         
     }
@@ -32,7 +32,7 @@ class ImageController extends Controller
                 'url' => Storage::disk('s3')->url($path),
                 'item_id' => $item->id
             ]);
-            return redirect('/show/'.$item->id)->with('item', $item);
+            return redirect('/show/'.$item->slug)->with('item', $item);
         }
 
     }

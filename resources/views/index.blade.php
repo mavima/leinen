@@ -19,8 +19,12 @@
       <div class="index-grid">
         @foreach ($items as $item)
         <div class="card index-card" style="width: 18rem; margin:1rem;">
-            <a href = {{ route('show', [$item->id]) }}>
+            <a href = {{ route('show', [$item->slug]) }}>
+              @if ($item->images->first() == null)
+              <img class="card-img-top" src={{ Storage::url('images/index-banner.png') }}>
+              @else
             <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($item->images->first()->filename, '+5 minutes') }}" alt="{ $item->name }">   
+            @endif
             <div class="card-body">       
               <h5 class="card-title">{{$item->name}}</h5>
               <div class="card-body-bottom">

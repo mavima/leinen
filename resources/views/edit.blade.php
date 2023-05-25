@@ -4,7 +4,7 @@
 
     <div class="form-container">
         <h2>Edit the {{$item->name}}</h2>
-        <form action="/edit/{{$item->id}}" method="POST" class="item-form">
+        <form action="/edit/{{$item->slug}}" method="POST" class="item-form">
             @csrf
             @method('PUT')
             <label for="name">Name</label>
@@ -23,7 +23,7 @@
             <div class="form-buttons">
                 <button class="l-btn main-btn form-btn">Save</button>
             </form>
-            <form action="/delete/{{$item->id}}" method="POST">
+            <form action="/delete/{{$item->slug}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="l-btn delete-btn form-btn" onclick="return confirm('Are you sure?')">Delete</button>

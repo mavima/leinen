@@ -3,6 +3,9 @@
 
 <div class="show-container">
     <h2 class="show-title">{{ $item->name }}</h2>
+    @if (count($images) < 1)
+    <img class="index-banner default-img" src={{ Storage::url('images/index-banner.png') }}>
+    @else
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         @foreach ($images as $key => $image)
@@ -20,6 +23,7 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    @endif
     
 
     <p><i class="fa-solid fa-location-dot show-icon"></i>  {{ $item->location }}</p>
@@ -30,12 +34,12 @@
 
     <div class="show-buttons">
         @if ($currentUser == $item->user_id)
-            <a class="l-btn main-btn margin-bottom" href = {{ route('createImage', [$item->id]) }}>Add image</a>
-            <a class="l-btn main-btn" href = {{ route('edit', [$item->id]) }}>Edit</a>
+            <a class="l-btn main-btn margin-bottom" href = {{ route('createImage', [$item->slug]) }}>Add image</a>
+            <a class="l-btn main-btn" href = {{ route('edit', [$item->slug]) }}>Edit</a>
         @else
-          <a class="l-btn main-btn" href = {{ route('contact', [$item->id]) }}>Contact owner</a>
+          <a class="l-btn main-btn" href = {{ route('contact', [$item->slug]) }}>Contact owner</a>
         @endif
-        <a class="l-btn back-btn" href="{{ '/index' }}"><< Back</a>
+        <a class="l-btn back-btn" href="{{ '/index' }}"><i class="fa-solid fa-caret-left"></i>  Back</a>
     </div>
 </div>
 <script type="module">
