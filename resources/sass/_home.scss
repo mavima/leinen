@@ -1,29 +1,28 @@
 .home-container {
-    background: url("/./storage/app/images/bg-home.png") no-repeat center center;
+    background: url("/./storage/app/images/bg-home-mobile.png") center center;
     background-size: cover;
     height: fit-content;
     padding-bottom: 5vh;
     width: auto;
     overflow: hidden;
     margin-top: -1.5rem;
-    margin-bottom: -1.5rem;
+    padding-bottom: 5rem;
 }
 
 .home-title {
     color:#5ab6cc;
-    padding-top: 20vh;
-    padding-left: 13vw;
     font-size: calc(1.8rem + 1.2vw);
     font-family: 'Fredericka the Great', cursive;
 }
 
 .home-text {
+    margin-top: 20vh;
     color: rgba(76, 89, 92, 1);
     font-family: 'Raleway', sans-serif;
     font-size: 1.2rem;
     width: 80%;
     margin-left: 10vw;
-    background-color: rgba(234, 245, 248, 0.4);
+    background-color: rgba(234, 245, 248, 0.7);
     padding: 1rem;
 }
 
@@ -42,21 +41,20 @@
     .home-text {
         width: 30%;
         margin-left: 13vw;
+        background-color: rgba(234, 245, 248, 0.4);
     }
 
     .home-container {
+        background: url("/./storage/app/images/bg-home-med.png") no-repeat center center;
         height: 100vh;
     }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .home-text {
-        width: 30%;
-        margin-left: 13vw;
-    }
 
     .home-container {
         height: 100vh;
+        background: url("/./storage/app/images/bg-home.png") no-repeat center center;
     }
 }

@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="home-container">
-        <h1 class="home-title">Partashare</h1>
+        
         <div class="home-text">
+            <h1 class="home-title">Partashare</h1>
             <p>Not everyone needs to own a hammer drill or a snowboard. If yours is collecting dust in the garage, rent or borrow it to someone who needs one. And if you are looking for a ladder or a waffle maker for a day, perhaps you can find it here.</p>
             <p>
                 <form action="{{ route('index') }}" method="GET" enctype="multipart/form-data">

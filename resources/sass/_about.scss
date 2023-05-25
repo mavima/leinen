@@ -1,0 +1,23 @@
+.about-container {
+    width: 80%;
+    margin: auto;
+    padding-top: 2rem;
+}
+
+.about-text {
+    margin-top: 2rem;
+    color: $violet;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    a:hover {
+        color: $turquoise;
+    }
+}
+
+.turquoise {
+    color: $turquoise;
+}
