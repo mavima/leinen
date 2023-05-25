@@ -31,6 +31,6 @@ class CreateItemController extends Controller
         $input['user_id'] = $user_id;
         $item = Item::create($input);
         
-        return redirect('images/create/'.$item->id)->with('item', $item);
+        return redirect('images/create/'.$item->slug)->with('item', $item);
     }
 }

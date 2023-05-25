@@ -27,4 +27,9 @@ class ItemRepository implements ItemInterface {
         }
         return $items;
     }
+
+    function findBySlug($slug): object {
+        $item = Item::where('slug', $slug)->first();
+        return $item;
+    }
 }
