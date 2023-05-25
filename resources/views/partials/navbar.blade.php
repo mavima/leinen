@@ -21,6 +21,9 @@
                         <a class="nav-link" href="{{ '/create' }}"> Add New Item</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ '/about' }}"> About</a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{{ route('index') }}" method="GET" class="form-inline">
                             <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
                             <button class="l-btn search-btn-nav main-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

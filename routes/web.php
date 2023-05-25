@@ -10,11 +10,13 @@ use App\Http\Controllers\DeleteItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageController;
 
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/', [App\Http\Controllers\PageController::class, 'home'])->name('home');
+Route::get('/about', [App\Http\Controllers\PageController::class, 'about'])->name('about');
 
 Route::get('/index', [App\Http\Controllers\ItemController::class, 'index'])->name('index');
 Route::get('/show/{item:slug}', [ShowItemController::class, 'show'])->name('show');
