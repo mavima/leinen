@@ -20,7 +20,7 @@ Route::get('/about', [App\Http\Controllers\PageController::class, 'about'])->nam
 
 Route::get('/index', [App\Http\Controllers\ItemController::class, 'index'])->name('index');
 Route::get('/show/{item:slug}', [ShowItemController::class, 'show'])->name('show');
-Route::get('/contact/{item}', [ContactController::class, 'contact'])->name('contact');
+Route::get('/contact/{item:slug}', [ContactController::class, 'contact'])->name('contact');
 
 Route::middleware(['auth'])->group( function () {
     Route::get('/create', [CreateItemController::class, 'new'])->name('new');

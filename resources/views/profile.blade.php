@@ -7,8 +7,12 @@
         @foreach($items as $item)
             <div class="card index-card" style="width: 18rem; margin:1rem;">
                 <a href = {{ route('show', [$item->id]) }}>
-                <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($item->images->first()->filename, '+5 minutes') }}" alt="{ $item->name }">   
-                <div class="card-body profile-card-body">       
+                    @if ($item->images->first() == null)
+                        <img class="card-img-top" src={{ Storage::url('images/default-card-img.png') }}>
+                    @else
+                        <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($item->images->first()->filename, '+5 minutes') }}" alt="{ $item->name }">   
+                    @endif
+                        <div class="card-body profile-card-body">       
                     <div class="card-body-bottom">
                         <p class="card-text">{{$item->name}}</p>
                         <p>{{ $item->price }}€/day</p>

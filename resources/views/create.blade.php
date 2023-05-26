@@ -19,6 +19,16 @@
         <button class="l-btn main-btn form-btn">Save</button>
         <a class="l-btn back-btn form-btn" href="{{ '/index' }}"> Back</a>
     </form>
+    <br>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
  </div>
 
  

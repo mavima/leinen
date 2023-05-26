@@ -29,6 +29,15 @@
                 <button class="l-btn delete-btn form-btn" onclick="return confirm('Are you sure?')">Delete</button>
             </form>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h4>Remove images</h4>    
         <div class="edit-image-container">
             @foreach($images as $image)
@@ -42,6 +51,8 @@
                 </div>
             @endforeach
         </div>
+        <br>
     </div>
+
 
 @endsection

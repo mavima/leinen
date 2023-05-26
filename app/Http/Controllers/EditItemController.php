@@ -29,10 +29,10 @@ class EditItemController extends Controller
             return redirect('/index');
         }
         $inputFields = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|integer|min:0|max:100000',
-            'location' => 'required',
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:800',
+            'price' => 'required|integer|min:0|max:10000',
+            'location' => 'required|string|max:100',
             'category_id'=> 'filled',
         ]);
 
