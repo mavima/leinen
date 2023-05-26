@@ -21,7 +21,7 @@
         <div class="card index-card" style="width: 18rem; margin:1rem;">
             <a href = {{ route('show', [$item->slug]) }}>
               @if ($item->images->first() == null)
-              <img class="card-img-top" src={{ Storage::url('images/index-banner.png') }}>
+              <img class="card-img-top" src={{ Storage::url('images/default-card-img.png') }}>
               @else
             <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($item->images->first()->filename, '+5 minutes') }}" alt="{ $item->name }">   
             @endif

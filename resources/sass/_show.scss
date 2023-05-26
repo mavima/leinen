@@ -18,8 +18,7 @@
 
 
         .carousel-item img {
-            height: 100%;
-            max-height: 400px;
+            height: 27vh;
             object-fit: contain;
             margin: auto;
         }
@@ -60,5 +59,9 @@
     .show-container {
         width: 80%;
         margin: auto;
+    }
+
+    .carousel-item img {
+        height: 32vh !important;
     }
 }

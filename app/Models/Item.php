@@ -32,28 +32,22 @@ class Item extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public static function boot()
-{
-    parent::boot();
+    public static function boot() {
+        parent::boot();
 
-    // registering a callback to be executed upon the creation of an activity AR
-    static::creating(function($item) {
+        // registering a callback to be executed upon the creation of an activity AR
+        static::creating(function($item) {
 
-        // produce a slug based on the activity title
-        $slug = Str::slug($item->name);
+            // produce a slug based on the activity title
+            $slug = Str::slug($item->name);
 
-        // check to see if any other slugs exist that are the same & count them
-        $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+            // check to see if any other slugs exist that are the same & count them
+            $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
 
-        // if other slugs exist that are the same, append the count to the slug
-        $item->slug = $count ? "{$slug}-{$count}" : $slug;
+            // if other slugs exist that are the same, append the count to the slug
+            $item->slug = $count ? "{$slug}-{$count}" : $slug;
 
-    });
+        });
 
-}
-
-    public function getRouteKeyName() {
-        return 'name';
     }
-
 }

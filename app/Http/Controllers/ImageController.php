@@ -21,10 +21,12 @@ class ImageController extends Controller
     }
 
     public function store(Request $request, Item $item) {
-        // dd($request);
        if (is_null($request->file('image'))) {
             return redirect()->back();
         } else {
+            $request->validate([
+                'image' => 'required|image|max:2048'
+            ]);
             $path = $request->file('image')->store('images', 's3');
             Storage::disk('s3')->setVisibility($path, 'public');
             $image = Image::create([
