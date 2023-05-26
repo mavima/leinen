@@ -6,7 +6,7 @@
     <div class="index-grid">
         @foreach($items as $item)
             <div class="card index-card" style="width: 18rem; margin:1rem;">
-                <a href = {{ route('show', [$item->id]) }}>
+                <a href = {{ route('show', [$item->slug]) }}>
                     @if ($item->images->first() == null)
                         <img class="card-img-top" src={{ Storage::url('images/default-card-img.png') }}>
                     @else
@@ -18,8 +18,8 @@
                         <p>{{ $item->price }}€/day</p>
                     </div>
                     <div class="profile-card-buttons">
-                        <a class="l-btn main-btn" href = {{ route('edit', [$item->id]) }}>Edit</a>
-                        <form action="/delete/{{$item->id}}" method="POST">
+                        <a class="l-btn main-btn" href = {{ route('edit', [$item->slug]) }}>Edit</a>
+                        <form action="/delete/{{$item->slug}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="l-btn delete-btn" onclick="return confirm('Are you sure?')">Delete</button>
