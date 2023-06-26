@@ -1,5 +1,4 @@
 .home-container {
-    background: url("/./storage/app/images/bg-home-mobile.png") center center;
     background-size: cover;
     height: fit-content;
     padding-bottom: 5vh;
@@ -41,11 +40,9 @@
     .home-text {
         width: 30%;
         margin-left: 13vw;
-        background-color: rgba(234, 245, 248, 0.4);
     }
 
     .home-container {
-        background: url("/./storage/app/images/bg-home-med.png") no-repeat center center;
         height: 100vh;
     }
 }
@@ -55,6 +52,5 @@
 
     .home-container {
         height: 100vh;
-        background: url("/./storage/app/images/bg-home.png") no-repeat center center;
     }
 }

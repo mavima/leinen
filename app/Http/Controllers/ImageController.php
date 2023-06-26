@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Image;
 use App\Models\Item;
+use App\Models\Image;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class ImageController extends Controller
@@ -27,6 +28,11 @@ class ImageController extends Controller
             $request->validate([
                 'image' => 'required|image|max:2048'
             ]);
+            // Storage::disk('s3')->delete(Auth::id().'.jpg');
+            // Storage::disk('s3')->copy(
+            //     $request->key,
+            //     Auth::id() .'.jpg'
+            // );
             $path = $request->file('image')->store('images', 's3');
             Storage::disk('s3')->setVisibility($path, 'public');
             $image = Image::create([

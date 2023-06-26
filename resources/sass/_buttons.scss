@@ -45,3 +45,21 @@
 .delete-btn:hover {
     padding: 5px 7px;
 }
+
+.nomatch-search-btn {
+    width: 200px;
+    margin-left: 1rem;
+}
+
+.nomatch-btn {
+    width: 200px;
+    margin: 1rem 0 0 4rem;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .nomatch-search-btn {
+        width: fit-content;
+        margin-left: 0;
+    }
+}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="home-container">
+    <div class="home-container" style="background: url('{{asset('images/bg-home.png')}}'); ">
         
         <div class="home-text">
             <h1 class="home-title">Partashare</h1>
