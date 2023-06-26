@@ -25,4 +25,24 @@
 
 </div>
 
+<script type="text/javascript">
+
+    $('.image-form').submit(event => {
+        event.preventDefault();
+
+        window.Vapor.store(
+            $(.image-form).prop('image').files[0],
+            {
+                visibility: "public-read"
+            }
+        ).then(response => {
+            axios.post('/item', {
+                key: response.key
+            })
+        }).then(() => window.location.reload());
+
+    });
+
+</script>
+
 @endsection

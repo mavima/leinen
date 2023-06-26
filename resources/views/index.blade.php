@@ -1,7 +1,7 @@
 @extends('layouts.app')
  
 @section('content')
-<img class="index-banner" src={{ Storage::url('images/index-banner.png') }}>
+<img class="index-banner" src={{ asset('images/index-banner.png') }}>
 <div class="index-container">
   <h2 class="index-title">Waiting to be shared</h2>
   <form action="{{ route('index') }}" method="GET" enctype="multipart/form-data" class="index-filter-form">
@@ -21,7 +21,7 @@
         <div class="card index-card" style="width: 18rem; margin:1rem;">
             <a href = {{ route('show', [$item->slug]) }}>
               @if ($item->images->first() == null)
-              <img class="card-img-top" src={{ Storage::url('images/default-card-img.png') }}>
+              <img class="card-img-top" src={{ asset('images/default-card-img.png') }}>
               @else
             <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($item->images->first()->filename, '+5 minutes') }}" alt="{ $item->name }">   
             @endif
@@ -41,13 +41,12 @@
         <p class="no-matches-text">Sorry, there are no items that match your search. Try again or browse other items.</p>
         <form action="{{ route('index') }}" method="GET" class="no-matches-form">
           <input type="text" name="search" class="home-search" required/>
-          <div class="no-matches-buttons">
-            <button type="submit" class="l-btn main-btn index-filter-btn">Search</button>
-          </form>
-          <a href = {{ route('index') }}>
-            <button class="l-btn main-btn index-filter-btn">Browse</button>
-          </a>
-        </div>
+          <button type="submit" class="l-btn main-btn nomatch-search-btn">Search</button>
+        </form>
+        <a href = {{ route('index') }}>
+          <button class="l-btn main-btn nomatch-btn">Browse</button>
+        </a>
+
       @endif
   </div>
     @endsection
