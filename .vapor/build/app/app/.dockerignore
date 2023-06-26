@@ -1,0 +1,6 @@
+vite.config.ts.timestamp-*.mjs
+passphrase.txt
+logs/
+.git
+*.md
+.cache
